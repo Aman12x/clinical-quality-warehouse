@@ -5,3 +5,6 @@ snomed_code,procedure_description,planned_category
 385798007,Radiation therapy care (regime/therapy),cancer_treatment
 265764009,Renal dialysis (procedure),dialysis
 33195004,Teleradiotherapy procedure (procedure),cancer_treatment
+447759004,Brachytherapy of breast (procedure),cancer_treatment
+384692006,Intracavitary brachytherapy (procedure),cancer_treatment
+302497006,Hemodialysis (procedure),dialysis

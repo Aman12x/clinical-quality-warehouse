@@ -37,6 +37,33 @@ are dbt seeds, so every clinical rule is versioned and reviewable.
   staging view, and that the encounter claim-cost total survives typing. It exits
   non-zero on any mismatch.
 
+## Results (5,000-patient Synthea population, seed 42)
+
+Generated with `make generate`: 5,637 patient records (including deceased) and 287,588 encounters. Reconciliation: all checks passed (`results/reconciliation.json`).
+
+### Quality measures, measurement year 2025
+
+| Measure | Numerator | Denominator | Rate |
+|---|---|---|---|
+| `bp_control_lt140_90` | 809 | 1,233 | 65.6% |
+| `ed_visits_per_1000_patients` | 755 | 4,655 | 162.2 per 1,000 |
+| `hba1c_control_lt8` | 251 | 255 | 98.4% |
+| `hba1c_poor_control_gt9` | 2 | 255 | 0.8% |
+| `readmission_30d_unplanned` | 1 | 102 | 1.0% |
+
+All years: `results/quality_measures.csv`.
+
+### Readmission risk model
+
+2,693 eligible index stays from 1,172 patients, 43 readmitted within 30 days (base rate 1.6%). Readmissions are rare in Synthea, so every stay is scored out of fold with 5-fold cross-validation grouped by patient.
+
+| Model | ROC-AUC (out of fold) | PR-AUC | ROC-AUC range across folds | Readmissions in top risk decile |
+|---|---|---|---|---|
+| logistic regression | 0.647 | 0.033 | 0.48-0.82 | 19% |
+| gradient boosting | 0.744 | 0.056 | 0.63-0.92 | 44% |
+
+With only 43 positive stays the fold-to-fold spread is wide, so treat these as a working baseline, not a validated clinical model. Full output: `results/readmission_model.json`.
+
 ## Run it
 
 ```bash

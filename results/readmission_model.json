@@ -1,0 +1,51 @@
+{
+  "index_stays": 2693,
+  "patients": 1172,
+  "readmissions": 43,
+  "base_rate": 0.016,
+  "evaluation": "StratifiedGroupKFold(5) by patient_id, seed 42, out-of-fold scores",
+  "features": [
+    "age_at_admit",
+    "is_female",
+    "length_of_stay_days",
+    "prior_inpatient_365d",
+    "ed_visits_180d",
+    "active_medications_at_admit",
+    "has_diabetes",
+    "has_hypertension",
+    "has_heart_failure",
+    "has_coronary_heart_disease",
+    "has_chronic_kidney_disease",
+    "has_copd"
+  ],
+  "models": {
+    "logistic_regression": {
+      "roc_auc_oof": 0.6466,
+      "pr_auc_oof": 0.0328,
+      "roc_auc_fold_min": 0.4752,
+      "roc_auc_fold_max": 0.8197,
+      "top_decile_capture": 0.186
+    },
+    "gradient_boosting": {
+      "roc_auc_oof": 0.7439,
+      "pr_auc_oof": 0.0564,
+      "roc_auc_fold_min": 0.6265,
+      "roc_auc_fold_max": 0.9211,
+      "top_decile_capture": 0.4419
+    }
+  },
+  "logistic_coefficients": {
+    "age_at_admit": 0.7518,
+    "is_female": 0.4395,
+    "length_of_stay_days": 0.3602,
+    "active_medications_at_admit": -0.2173,
+    "has_heart_failure": 0.2101,
+    "has_hypertension": 0.1375,
+    "ed_visits_180d": -0.1372,
+    "has_copd": -0.1341,
+    "has_chronic_kidney_disease": 0.1289,
+    "has_diabetes": -0.0593,
+    "has_coronary_heart_disease": 0.0502,
+    "prior_inpatient_365d": 0.0315
+  }
+}
