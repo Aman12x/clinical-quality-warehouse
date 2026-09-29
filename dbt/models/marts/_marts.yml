@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: mart_readmissions
+    description: Eligible index inpatient stays (unplanned, alive at discharge, full 30-day follow-up observable).
+    columns:
+      - name: encounter_id
+        tests: [unique, not_null]
+      - name: readmitted_30d
+        tests: [not_null]
+  - name: mart_quality_measures
+    description: Yearly clinical quality measures, one row per measure per measurement year.
+    columns:
+      - name: measure_id
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [readmission_30d_unplanned, ed_visits_per_1000_patients, hba1c_poor_control_gt9, hba1c_control_lt8, bp_control_lt140_90]

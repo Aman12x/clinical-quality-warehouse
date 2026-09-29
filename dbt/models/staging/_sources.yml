@@ -1,0 +1,5 @@
+version: 2
+sources:
+  - name: raw
+    schema: raw
+    tables: [{name: patients}, {name: encounters}, {name: conditions}, {name: observations}, {name: medications}, {name: procedures}]

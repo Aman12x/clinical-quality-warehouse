@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "table": "patients",
+      "csv_rows": 1171,
+      "raw_rows": 1171,
+      "staging_rows": 1171,
+      "passed": true
+    },
+    {
+      "table": "encounters",
+      "csv_rows": 53346,
+      "raw_rows": 53346,
+      "staging_rows": 53346,
+      "passed": true
+    },
+    {
+      "table": "conditions",
+      "csv_rows": 8376,
+      "raw_rows": 8376,
+      "staging_rows": 8376,
+      "passed": true
+    },
+    {
+      "table": "medications",
+      "csv_rows": 42989,
+      "raw_rows": 42989,
+      "staging_rows": 42989,
+      "passed": true
+    },
+    {
+      "table": "procedures",
+      "csv_rows": 34981,
+      "raw_rows": 34981,
+      "staging_rows": 34981,
+      "passed": true
+    },
+    {
+      "check": "encounter total_claim_cost sum",
+      "csv": 6868312.95,
+      "warehouse": 6868312.950004956,
+      "abs_diff": 4.955567419528961e-06,
+      "passed": true
+    }
+  ]
+}

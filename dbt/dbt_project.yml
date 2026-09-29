@@ -1,0 +1,16 @@
+name: clinical_quality
+version: "1.0.0"
+profile: clinical_quality
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+vars:
+  readmission_window_days: 30
+models:
+  clinical_quality:
+    staging: {+materialized: view, +schema: staging}
+    intermediate: {+materialized: table, +schema: intermediate}
+    marts: {+materialized: table, +schema: marts}
+seeds:
+  clinical_quality:
+    +schema: reference
